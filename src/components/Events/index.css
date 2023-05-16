@@ -1,29 +1,33 @@
 /* Write your CSS here */
-.app-container {
+.events-container {
   display: flex;
-  flex-direction: row;
+  align-items: flex-start;
+  background-color: #3a4b63;
 }
 
-.item-container {
-  background-color: #323f4b;
+.events-content {
+  width: 60%;
   height: 100vh;
-  width: 50vw;
-}
-
-.details-container {
-  background-color: #ffffff;
-  height: 100vh;
-  width: 50vw;
+  padding-top: 48px;
+  padding-right: 4px;
+  padding-bottom: 48px;
+  padding-left: 48px;
+  overflow-y: auto;
 }
 
 .heading {
-  color: #ffffff;
-  font-family: 'roboto';
+  color: #f8fafc;
+  font-family: 'Roboto';
   font-size: 32px;
-  padding-left: 12px;
+  font-weight: bold;
+  line-height: 1.2px;
+  margin: 0px;
+  margin-bottom: 48px;
 }
 
-.events-container {
+.events-list {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 0px;
+  padding-left: 0px;
 }
