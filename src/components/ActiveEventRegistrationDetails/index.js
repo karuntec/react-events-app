@@ -1,20 +1,56 @@
 // Write your code here
 import './index.css'
 
-const registrationConstant = {
+const registrationStatus = {
   yetToRegister: 'YET_TO_REGISTER',
   registered: 'REGISTERED',
   registrationsClosed: 'REGISTRATIONS_CLOSED',
 }
 
 const ActiveEventRegistrationDetails = props => {
-  const {registrationStatus} = props
+  const {activeEventRegistrationStatus} = props
+
+  const renderNoActiveEventView = () => (
+    <p className="no-active-event-description">
+      Click on an event, to view its registration details
+    </p>
+  )
+
+  const renderRegistrationsClosedView = () => (
+    <div className="view-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/events-registrations-closed-img.png"
+        alt="registrations closed"
+        className="registrations-closed-image"
+      />
+      <h1 className="registrations-closed-heading">
+        Registrations Are Closed Now!
+      </h1>
+      <p className="registrations-closed-description">
+        Stay tuned. We will reopen the registrations soon!
+      </p>
+    </div>
+  )
+
+  const renderRegisteredView = () => (
+    <div className="view-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/events-regestered-img.png"
+        alt="registered"
+        className="registered-img"
+      />
+      <h1 className="registered-heading">
+        You have already registered for the event
+      </h1>
+    </div>
+  )
+
   const renderYetToRegisterView = () => (
-    <div className="register-container">
+    <div className="view-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/events-register-img.png"
-        className="tet_to_image"
         alt="yet to register"
+        className="yet-to-register-image"
       />
       <p className="register-description">
         A live performance brings so much to your relationship with dance.
@@ -27,52 +63,24 @@ const ActiveEventRegistrationDetails = props => {
     </div>
   )
 
-  const renderRegisteredView = () => (
-    <div className="registration-container">
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/events-regestered-img.png"
-        className="registered-image"
-        alt="registered"
-      />
-      <h1 className="registration-heading">
-        You have already registered for the event
-      </h1>
-    </div>
-  )
-
-  const renderRegistrationsClosedView = () => (
-    <div className="registration-container">
-      <img
-        className="closed-image"
-        src="https://assets.ccbp.in/frontend/react-js/events-registrations-closed-img.png"
-        alt="registrations closed"
-      />
-      <h1 className="registration-heading">Registrations Are Closed Now</h1>
-      <p className="registration-description">
-        Stay tuned. We will reopen the registrations soon!
-      </p>
-    </div>
-  )
-
-  const renderNoActiveEventView = () => (
-    <p className="no-active-event-description">
-      Click on an event, to view its registration details
-    </p>
-  )
-
-  const renderRegistrationStatus = () => {
-    switch (registrationStatus) {
-      case registrationConstant.yetToRegister:
+  const renderActiveEventRegistrationDetails = () => {
+    switch (activeEventRegistrationStatus) {
+      case registrationStatus.yetToRegister:
         return renderYetToRegisterView()
-      case registrationConstant.registered:
+      case registrationStatus.registered:
         return renderRegisteredView()
-      case registrationConstant.registrationsClosed:
+      case registrationStatus.registrationsClosed:
         return renderRegistrationsClosedView()
       default:
         return renderNoActiveEventView()
     }
   }
-  return <>{renderRegistrationStatus()}</>
+
+  return (
+    <div className="registration-status-container">
+      {renderActiveEventRegistrationDetails()}
+    </div>
+  )
 }
 
 export default ActiveEventRegistrationDetails
