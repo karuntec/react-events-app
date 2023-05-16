@@ -1,16 +1,18 @@
+// Write your code here
 import './index.css'
 
 const EventItem = props => {
-  const {key, tabDetails, activeEventId, isActive} = props
-  const {imageUrl, name, location} = tabDetails
-  const eventImageClassName = isActive ? 'active-image' : 'not-active-img'
+  const {eventDetails, setActiveEventId, isActive} = props
+  const {imageUrl, name, location, id} = eventDetails
+  const eventImageClassName = isActive ? 'event-image active' : 'event-image'
 
   const onClickEvent = () => {
-    activeEventId(key)
+    setActiveEventId(id)
   }
+
   return (
     <li className="event-item">
-      <button type="button" onClick={onClickEvent} className="event-button">
+      <button type="button" className="event-button" onClick={onClickEvent}>
         <img src={imageUrl} alt="event" className={eventImageClassName} />
       </button>
       <p className="name">{name}</p>
